@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/testController")
 public class testController {
 
-    @ApiLog(logType = "testfucking") //fuckingyou
+    @ApiLog(logType = "testyou") //fuckingyou
     @PostMapping("/postRequestParam")
     public String testPostRequestParam(@RequestParam String request){
         return "apiLog return" + request;
