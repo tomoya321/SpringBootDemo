@@ -32,7 +32,6 @@ public class ApiLogApplication {
         //时区
         TimeZone.setDefault(TimeZone.getTimeZone("UTC+8"));
     }
-//test
     public static void main(String[] args) {
         SpringApplication.run(ApiLogApplication.class, args);
     }
