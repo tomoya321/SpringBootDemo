@@ -29,20 +29,16 @@ public class testController {
     @ApiLog(logType = "test")
     @PostMapping("/postRequestParam")
     public String testPostRequestParam(@RequestParam String request){
-        //ceshixiugai zengjiadaima2222222222 123123    devgengxin
-        return "apiLog return" + request;        //ceshixiugai zengjiadaima222222222 13123
+        return "apiLog return" + request;
 
     }
 
     @ApiLog(logType = "test")
-    @PostMapping("/postRequestBody") sfsafsaf
-    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception { safadsfa
-        System.out.println(apiLog.toString());adfafs
+    @PostMapping("/postRequestBody")
+    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception {
+        System.out.println(apiLog.toString());
         return "apiLog return";
     }
-    sdfasdfas
-    dsafadsfds
 
-    //todo json传参?  master jiusuanjiejue222222?
-//    shajibawanyi
+    //todo json传参?
 }
