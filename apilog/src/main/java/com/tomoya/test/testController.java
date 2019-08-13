@@ -35,11 +35,13 @@ public class testController {
     }
 
     @ApiLog(logType = "test")
-    @PostMapping("/postRequestBody")
-    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception {
-        System.out.println(apiLog.toString());
+    @PostMapping("/postRequestBody") sfsafsaf
+    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception { safadsfa
+        System.out.println(apiLog.toString());adfafs
         return "apiLog return";
     }
+    sdfasdfas
+    dsafadsfds
 
     //todo json传参?  master jiusuanjiejue222222?
 //    shajibawanyi
