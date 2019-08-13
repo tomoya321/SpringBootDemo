@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * @create 2019/8/11
  * @since 1.0.0
  */
-@ResponseBody
-@Controller
+@RestController
 @RequestMapping("/testController")
 public class testController {
 
@@ -35,10 +34,10 @@ public class testController {
 
     @ApiLog(logType = "test")
     @PostMapping("/postRequestBody")
-    public String testPostRequestBody(@RequestBody ApiLog apiLog){
+    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception {
         System.out.println(apiLog.toString());
         return "apiLog return";
     }
 
-    //todo json传参?
+    //todo json传参?  dev test
 }
