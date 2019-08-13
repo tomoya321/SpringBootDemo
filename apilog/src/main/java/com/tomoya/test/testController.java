@@ -31,9 +31,7 @@ public class testController {
     public String testPostRequestParam(@RequestParam String request){
         //ceshixiugai zengjiadaima2222222222
         return "apiLog return" + request;        //ceshixiugai zengjiadaima222222222
-        //ceshixiugai zengjiadaima22222222        //ceshixiugai zengjiadaima22222222
-        //ceshixiugai zengjiadaima22222222        //ceshixiugai zengjiadaima22222222
-        //ceshixiugai zengjiadaima22222222        //ceshixiugai zengjiadaima22222222
+
     }
 
     @ApiLog(logType = "test")
