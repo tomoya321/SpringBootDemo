@@ -29,7 +29,9 @@ public class testController {
     @ApiLog(logType = "test")
     @PostMapping("/postRequestParam")
     public String testPostRequestParam(@RequestParam String request){
-        return "apiLog return" + request;
+        //ceshixiugai zengjiadaima
+        return "apiLog return" + request;        //ceshixiugai zengjiadaima
+        //ceshixiugai zengjiadaima
     }
 
     @ApiLog(logType = "test")
