@@ -29,14 +29,23 @@ public class testController {
     @ApiLog(logType = "test")
     @PostMapping("/postRequestParam")
     public String testPostRequestParam(@RequestParam String request){
+        System.out.println("fuckyou");
         return "apiLog return" + request;
     }
 
     @ApiLog(logType = "test")
     @PostMapping("/postRequestBody")
-    public String testPostRequestBody(@RequestBody ApiLog apiLog) throws Exception {
-        System.out.println(apiLog.toString());
+    public String testPostRequestBody(@RequestBody User user) throws Exception {
+        System.out.println(user.toString());
+        System.out.println("fucking");
         return "apiLog return";
     }
-    //todo json传参?
+
+    @PostMapping("/unionParam")
+    public String testUnionParam(@RequestParam String str,@RequestBody User user) {
+        System.out.println(user.toString());
+        System.out.println(str);
+        return "union return";
+    }
+    //todo 热部署开启?
 }

@@ -13,3 +13,10 @@ spring:
     url: jdbc:mysql://localhost:3306/mine_local?characterEncoding=UTF-8
     username: root
     password: 1234567
+  devtools:
+    restart:
+      enabled: true #开启热部署
+  thymeleaf:
+    cache: false
+server:
+  port: 8090
