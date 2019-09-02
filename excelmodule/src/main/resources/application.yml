@@ -1,0 +1,22 @@
+debug: true #启动调试日志
+
+spring:
+  application:
+    name: excelmodule
+  banner:
+    charset: UTF-8
+    location: classpath:Banner/Big.txt
+    image:
+      height: 5
+      invert: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/mine_local?characterEncoding=UTF-8
+    username: root
+    password: 1234567
+  devtools:
+    restart:
+      enabled: true #开启热部署
+  thymeleaf:
+    cache: false
+server:
+  port: 8091
