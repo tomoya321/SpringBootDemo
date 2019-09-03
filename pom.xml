@@ -12,6 +12,7 @@
         <module>apilog</module>
         <module>excelModule</module>
         <module>common</module>
+        <module>testmodule</module>
     </modules>
     <!--定义公共资源版本-->
     <parent>
