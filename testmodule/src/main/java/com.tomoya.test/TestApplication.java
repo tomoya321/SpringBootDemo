@@ -25,13 +25,13 @@ import java.util.TimeZone;
  * @since 1.0.0
  */
 @SpringBootApplication
-public class application {
+public class TestApplication {
     @PostConstruct
     void started() {
         //时区
         TimeZone.setDefault(TimeZone.getTimeZone("UTC+8"));
     }
     public static void main(String[] args) {
-        SpringApplication.run(application.class, args);
+        SpringApplication.run(TestApplication.class, args);
     }
 }

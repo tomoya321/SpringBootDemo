@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.tomoya.test.exportreportperformance;
+package com.tomoya.test.exportreportperformance.domain;
 import javax.persistence.*;
 import java.util.Date;
 

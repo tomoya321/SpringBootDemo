@@ -8,8 +8,9 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.tomoya.test.exportreportperformance;
+package com.tomoya.test.exportreportperformance.dao;
 
+import com.tomoya.test.exportreportperformance.domain.ExportExcelLog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
