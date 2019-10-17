@@ -14,6 +14,8 @@ import com.tomoya.apilog.annoation.ApiLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -116,6 +118,78 @@ public class testController {
 
         System.out.println(tempDate2.compareTo(tempDate));
 
+
+    }
+
+    /**
+     * 筛选支付失败订单
+     */
+    @Test
+    public void testData() {
+
+        String fileName ="F:\\zfb.txt";
+        String wx = null;
+        try {
+            wx = readFile(fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(wx);
+        String[] strwx = wx.split(",");
+
+        String fileNameZT ="F:\\ZT.txt";
+        String zt = null;
+        try {
+            zt = readFile(fileNameZT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(zt);
+        String[] strzt = zt.split(",");
+
+        Set<String> setStr = new HashSet<>();
+        for (int i = 0; i < strzt.length; i ++) {
+            setStr.add(strzt[i]);
+        }
+        for (int i = 0; i < strwx.length; i ++) {
+            if (setStr.contains(strwx[i])) {
+                System.out.println("正常" + strwx[i]);
+            } else {
+                System.out.println(strwx[i]);
+            }
+        }
+
+    }
+
+    public static String readFile(String fileName) throws Exception{
+        FileReader fileReader = new FileReader(fileName);
+
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line =bufferedReader.readLine();
+
+        String returnstr = null;
+        while (line!=null){
+            returnstr += line;
+            line = bufferedReader.readLine();
+        }
+
+        bufferedReader.close();
+        fileReader.close();
+        return returnstr;
+    }
+
+    @Test
+    public void testdate() {
+        String StrD ="2019-10-21 00:00:00";
+        SimpleDateFormat sf =new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+        Date dat = null;
+        try {
+            dat = sf.parse(StrD);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(dat.getTime());
 
     }
 

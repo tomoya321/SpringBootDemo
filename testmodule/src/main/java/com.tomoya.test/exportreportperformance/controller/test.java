@@ -10,13 +10,17 @@
  */
 package com.tomoya.test.exportreportperformance.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.tomoya.test.exportreportperformance.dao.ExportExcelLogDAO;
 import com.tomoya.test.exportreportperformance.domain.ExportExcelLog;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -112,5 +116,33 @@ public class test {
 
         Long time2 = System.currentTimeMillis();
         System.out.println(time2 - time1);
+    }
+
+    private static Map<String, String> getCurrentMonthFirstAndEndMonth(Date date) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        Date theDate = calendar.getTime();
+
+        //本月第一天
+        GregorianCalendar gcLast = (GregorianCalendar) Calendar.getInstance();
+        gcLast.setTime(theDate);
+        gcLast.set(Calendar.DAY_OF_MONTH, 1);
+        String currentMonthFirstDay = df.format(gcLast.getTime());
+        StringBuffer str = new StringBuffer().append(currentMonthFirstDay).append(" 00:00:00");
+        currentMonthFirstDay = str.toString();
+
+        //本月最后一天
+        calendar.add(Calendar.MONTH, 1);    //加一个月
+        calendar.set(Calendar.DATE, 1);        //设置为该月第一天
+        calendar.add(Calendar.DATE, -1);    //再减一天即为上个月最后一天
+        String currentMonthEndDay = df.format(calendar.getTime());
+        StringBuffer endStr = new StringBuffer().append(currentMonthEndDay).append(" 23:59:59");
+        currentMonthEndDay = endStr.toString();
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("currentMonthFirstDay", currentMonthFirstDay);
+        map.put("currentMonthEndDay", currentMonthEndDay);
+        return map;
     }
 }
