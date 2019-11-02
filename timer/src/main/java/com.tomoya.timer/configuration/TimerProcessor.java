@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-public class TimerProcessor {
+public class  TimerProcessor {
     static Integer i = 0;
     //测试定时任务
     @Scheduled(cron = "0/5 * * * * ?")

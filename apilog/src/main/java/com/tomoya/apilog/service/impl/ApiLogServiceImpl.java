@@ -17,7 +17,9 @@ import com.tomoya.apilog.service.ApiLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -40,7 +42,13 @@ public class ApiLogServiceImpl implements ApiLogService {
             try {
                 ApiLog apiLog = new ApiLog();
                 apiLog.setType(type);
+
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai")); // 设置北京时区
+//                Date now = sdf.parse(new Date().toString());
+                // TODO 时间延迟了四个小时
                 apiLog.setPostTime(new Date());
+
                 apiLog.setRequest(request);
                 apiLog.setResponse(response);
                 apiLog.setError(error);
