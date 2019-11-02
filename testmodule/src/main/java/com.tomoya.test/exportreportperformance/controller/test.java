@@ -16,6 +16,7 @@ import com.tomoya.test.exportreportperformance.dao.ExportExcelLogDAO;
 import com.tomoya.test.exportreportperformance.domain.ExportExcelLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -145,4 +146,13 @@ public class test {
         map.put("currentMonthEndDay", currentMonthEndDay);
         return map;
     }
+
+    @Test
+    public void testIntegerToString() {
+        Integer a = 99;
+        System.out.println(a.toString());
+        System.out.println(String.valueOf(a));
+    }
+
+
 }

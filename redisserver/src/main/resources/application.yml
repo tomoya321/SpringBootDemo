@@ -18,5 +18,15 @@ spring:
       enabled: true #开启热部署
   thymeleaf:
     cache: false
+  redis:
+    database: 0
+    host: 118.31.8.19
+    port: 6379
+    timeout: 3000
+    pool:
+      max-idle: 8
+      min-idle: 200
+      max-active: 2000
+      max-wait: 1000
 server:
   port: 8090
