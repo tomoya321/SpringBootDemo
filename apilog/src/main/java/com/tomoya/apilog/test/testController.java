@@ -11,13 +11,19 @@
 package com.tomoya.apilog.test;
 
 import com.tomoya.apilog.annoation.ApiLog;
+import com.tomoya.apilog.service.ApiLogService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -30,12 +36,24 @@ import java.util.*;
 @RestController
 @RequestMapping("/testController")
 public class testController {
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 10, 10*60, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>());
 
-    @ApiLog(logType = "test")
+    @Autowired
+    private ApiLogService apiLogService;
+
+//    @ApiLog(logType = "test")
     @PostMapping("/postRequestParam")
     public String testPostRequestParam(@RequestParam String request){
         System.out.println("fuckyou");
-        return "apiLog return" + request;
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(123);
+                apiLogService.saveLog("1","1","1","1");
+            }
+        });
+
+        return "1";
     }
 
     @ApiLog(logType = "test")
@@ -127,7 +145,7 @@ public class testController {
     @Test
     public void testData() {
 
-        String fileName ="F:\\zfb.txt";
+        String fileName ="F:\\1030wx.txt";
         String wx = null;
         try {
             wx = readFile(fileName);
@@ -135,9 +153,9 @@ public class testController {
             e.printStackTrace();
         }
         System.out.println(wx);
-        String[] strwx = wx.split(",");
+        String[] strwx = wx.split("`");
 
-        String fileNameZT ="F:\\ZT.txt";
+        String fileNameZT ="F:\\1030sc.txt";
         String zt = null;
         try {
             zt = readFile(fileNameZT);
@@ -153,7 +171,7 @@ public class testController {
         }
         for (int i = 0; i < strwx.length; i ++) {
             if (setStr.contains(strwx[i])) {
-                System.out.println("正常" + strwx[i]);
+//                System.out.println("正常" + strwx[i]);
             } else {
                 System.out.println(strwx[i]);
             }
@@ -192,5 +210,14 @@ public class testController {
         System.out.println(dat.getTime());
 
     }
+
+
+    @RequestMapping("/testTong")
+    @ResponseBody
+    public String testTong(String oldPhone, String newPhone, String code, String bizUserId) {
+        String response = apiLogService.changBindPhone(oldPhone, newPhone, code, bizUserId);
+        return response;
+    }
+
 
 }
