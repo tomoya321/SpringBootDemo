@@ -32,9 +32,8 @@ public class ApiLogServiceImpl implements ApiLogService {
     @Autowired
     private ApiLogDao apiLogDao;
 
-
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void saveLog(String type, String request, String response, String error) {
         ApiLog apiLog = new ApiLog();
         apiLog.setType(type);

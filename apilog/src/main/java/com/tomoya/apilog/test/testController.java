@@ -210,14 +210,4 @@ public class testController {
         System.out.println(dat.getTime());
 
     }
-
-
-    @RequestMapping("/testTong")
-    @ResponseBody
-    public String testTong(String oldPhone, String newPhone, String code, String bizUserId) {
-        String response = apiLogService.changBindPhone(oldPhone, newPhone, code, bizUserId);
-        return response;
-    }
-
-
 }
