@@ -210,4 +210,35 @@ public class testController {
         System.out.println(dat.getTime());
 
     }
+
+    @Test
+    public void testStream() {
+        List<String> strings = new ArrayList<>();
+        strings.add("1889");
+        strings.add("1990");
+        strings.add("1883");
+        strings.add("1997");
+        strings.add("1888");
+
+        Optional<String> maxStr = strings.stream().max((s1, s2) -> s1.compareTo(s2));
+        System.out.println(maxStr.get());
+    }
+
+    @Test
+    public void testCompare() {
+        List<String> strings = new ArrayList<>();
+        strings.add("1889");
+        strings.add("1990");
+        strings.add("1883");
+        strings.add("1997");
+        strings.add("1888");
+
+        String maxNumber = "0";
+        for (String string : strings) {
+            if (maxNumber.compareTo(string) < 0) {
+                maxNumber = string;
+            }
+        }
+        System.out.println(maxNumber);
+    }
 }
