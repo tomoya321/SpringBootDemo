@@ -16,11 +16,8 @@ import com.tomoya.apilog.domain.ApiLog;
 import com.tomoya.apilog.service.ApiLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.text.SimpleDateFormat;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
-import java.util.TimeZone;
-
 /**
  * 〈一句话功能简述〉<br> 
  * 〈保存日志实现类〉
@@ -35,28 +32,15 @@ public class ApiLogServiceImpl implements ApiLogService {
     @Autowired
     private ApiLogDao apiLogDao;
 
-
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void saveLog(String type, String request, String response, String error) {
-        new Thread(() -> {
-            try {
-                ApiLog apiLog = new ApiLog();
-                apiLog.setType(type);
-
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai")); // 设置北京时区
-//                Date now = sdf.parse(new Date().toString());
-                // TODO 时间延迟了四个小时
-                apiLog.setPostTime(new Date());
-
-                apiLog.setRequest(request);
-                apiLog.setResponse(response);
-                apiLog.setError(error);
-                apiLogDao.save(apiLog);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
-
+        ApiLog apiLog = new ApiLog();
+        apiLog.setType(type);
+        apiLog.setPostTime(new Date());
+        apiLog.setRequest(request);
+        apiLog.setResponse(response);
+        apiLog.setError(error);
+        apiLogDao.save(apiLog);
     }
 }

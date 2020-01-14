@@ -2,31 +2,33 @@
  * Copyright (C), 2015-2019, XXX有限公司
  * FileName: RedisApplication
  * Author:   Tomoya
- * Date:     2019/10/30 14:31
- * Description: redis缓存测试服务
+ * Date:     2019/11/5 23:09
+ * Description:
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.tomoya.redisserver;
+package com.tomoya.redis;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈redis缓存测试服务〉
+ * 〈〉
  *
  * @author Tomoya
- * @create 2019/10/30
+ * @create 2019/11/5
  * @since 1.0.0
  */
+@EnableRedisRepositories
 @SpringBootApplication
 public class RedisApplication {
-
     @PostConstruct
     void started() {
         //时区
